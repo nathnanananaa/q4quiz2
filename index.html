@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz 2</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #94B4C1;
+      padding: 30px;
+    }
+    label {
+      font-weight: bold;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #333;
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h2>Grade Checker</h2>
+  <p>Type your grades below and click the button</p>
+  <div class="mb-2">
+    <label for="eng">English:</label>
+    <input type="text" id="eng" class="form-control">
+  </div>
+  <div class="mb-2">
+    <label for="math">Math:</label>
+    <input type="text" id="math" class="form-control">
+  </div>
+  <div class="mb-2">
+    <label for="sci">Science:</label>
+    <input type="text" id="sci" class="form-control">
+  </div>
+  <button onclick="Getresult()" class="btn btn-primary mt-2">Get average</button>
+  <div id="output"></div>
+
+  <script>
+    function Getresult() {
+      var eng = document.getElementById("eng").value;
+      var math = document.getElementById("math").value;
+      var sci = document.getElementById("sci").value;
+
+      var avg = Math.round((+eng + +math + +sci) / 3);
+      var msg = "";
+  
+      if (avg >= 94) {
+        msg = "you did great, perfect";
+      } else if (avg >= 87) {
+        msg = "awesome sauce you passed with flying colors";
+      } else if (avg >= 80) {
+        msg = "good enough, you passed";
+      } else if (avg >= 75) {
+        msg = "ruhroh... that's not the best result";
+      } else if (avg >= 70) {
+        msg = "you're cooked";
+      } else {
+        msg = "you failed so bad your score ain't showing 😭😭";
+      }
+  
+      document.getElementById("output").innerHTML = "average: " + avg + "<br>" + msg;
+      document.getElementById("output").style.display = "block";
+    }
+  </script>  
+
+</body>
+
+</html>
